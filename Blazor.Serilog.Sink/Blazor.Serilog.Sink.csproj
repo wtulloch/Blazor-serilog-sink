@@ -7,6 +7,11 @@
     <BlazorLinkOnBuild>false</BlazorLinkOnBuild>
     <LangVersion>7.3</LangVersion>
     <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
+    <Version>0.1.0-beta</Version>
+    <Authors>William Tullocch</Authors>
+    <PackageTags>Blazor; Serilog</PackageTags>
+    <Description>This is an experimental Serilog sink for use with Blazor that logs to the browser console.</Description>
+    <RepositoryUrl>https://github.com/wtulloch/Blazor-serilog-sink</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,8 +22,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.5.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.5.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.5.1" />
     <PackageReference Include="Serilog" Version="2.7.1" />
   </ItemGroup>
 

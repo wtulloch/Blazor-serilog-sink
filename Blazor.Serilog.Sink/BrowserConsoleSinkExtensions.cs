@@ -10,7 +10,7 @@ namespace Blazor.Serilog.Sink
         const string DefaultOutputTemplate = "[{Timestamp:yyyy-MM-dd HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}";
 
         public static LoggerConfiguration BrowserConsoleSink(this LoggerSinkConfiguration sinkConfig,
-           string outputTemplate = DefaultOutputTemplate, IFormatProvider formatProvider = null, Action<string> action = null)
+           string outputTemplate = DefaultOutputTemplate, IFormatProvider formatProvider = null)
         {
             if (sinkConfig == null)
                 throw new ArgumentException(nameof(sinkConfig));
@@ -19,7 +19,7 @@ namespace Blazor.Serilog.Sink
 
             var formatter = new MessageTemplateTextFormatter(outputTemplate, formatProvider);
 
-            return sinkConfig.Sink(new BrowserConsoleSink(formatter, action));
+            return sinkConfig.Sink(new BrowserConsoleSink(formatter));
         }
     }
 }
