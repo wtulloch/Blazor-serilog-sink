@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using System.Threading.Tasks;
 using Serilog.Core;
 using Serilog.Events;
 using Serilog.Formatting;
@@ -29,15 +28,38 @@ namespace Blazor.Serilog.Sink
                 sw.Flush();
                 if (_action == null)
                 {
-                    JSRuntime.Current.InvokeAsync<bool>("consoleLogFunctions.log", sw.ToString());
+
+                    InvokeConsoleLog(sw.ToString(), logEvent.Level);
                 }
                 else
                 {
                     _action(sw.ToString());
                 }
+            }
+        }
 
+        private void InvokeConsoleLog(string message, LogEventLevel logEventLevel)
+        {
+            var logFunctionToCall = "consoleLogFunctions.log";
+
+            switch (logEventLevel)
+            {
+                case LogEventLevel.Verbose:
+                case LogEventLevel.Debug:
+                case LogEventLevel.Information:
+                    break;
+                case LogEventLevel.Warning:
+                    logFunctionToCall = "consoleLogFunctions.warning";
+                    break;
+                case LogEventLevel.Error:
+                case LogEventLevel.Fatal:
+                    logFunctionToCall = "consoleLogFunctions.error";
+                    break;
+                default:
+                    break;
             }
 
+            JSRuntime.Current.InvokeAsync<bool>(logFunctionToCall, message);
 
         }
     }
