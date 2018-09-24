@@ -1,0 +1,39 @@
+﻿@page "/SerilogSink"
+<style>
+    .btn{
+        width: 50%;
+        margin: 10px;
+    }
+</style>
+    <h1> Simple test for Blaozr Serilog sink</h1>
+    <p> To view messages open the console in dev tools</p>
+    <div style="display: flex; flex-direction: column">
+        <button onclick="@LogInformation" class="btn btn-primary">Log information</button>
+        <button onclick="@LogWarning" class="btn btn-warning">Log a warning</button>
+        <button onclick="@LogError" class="btn btn-error">Log an error</button>
+    </div>
+    @functions{
+        protected void LogInformation()
+        {
+            Log.Information("this is some information");
+        }
+
+        protected void LogWarning()
+        {
+            Log.Warning("this is a warning");
+        }
+
+        protected void LogError()
+        {
+            try
+            {
+                throw new Exception("this is a test exception");
+            }
+            catch (Exception e)
+            {
+
+                Log.Error(e, "The error message is: {message}",e.Message );
+            }
+
+        }
+    }

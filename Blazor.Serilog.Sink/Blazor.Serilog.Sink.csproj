@@ -7,10 +7,10 @@
     <BlazorLinkOnBuild>false</BlazorLinkOnBuild>
     <LangVersion>7.3</LangVersion>
     <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
-    <Version>0.1.0-beta</Version>
+    <Version>0.5.1-beta</Version>
     <Authors>William Tullocch</Authors>
     <PackageTags>Blazor; Serilog</PackageTags>
-    <Description>This is an experimental Serilog sink for use with Blazor that logs to the browser console.</Description>
+    <Description>This is an experimental Serilog sink for use with Blazor that logs to the browser console. </Description>
     <RepositoryUrl>https://github.com/wtulloch/Blazor-serilog-sink</RepositoryUrl>
   </PropertyGroup>
 
